@@ -7,14 +7,14 @@
       name="description"
       content="tenda — An AI-native, mobile-first work operating system powered by AI agents for SMEs across the globe."
     />
-    <meta name="theme-color" content="#f7f8f4" />
+    <meta name="theme-color" content="#f5f3ec" />
     <title>Tenda</title>
     <link rel="icon" type="image/png" href="assets/tenda_icon.png" />
     <link rel="apple-touch-icon" href="assets/tenda_icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -22,67 +22,94 @@
   <body>
     <a class="skip-link" href="#waitlist">Skip to waitlist</a>
 
+    <header class="topbar" id="top">
+      <div class="topbar__inner">
+        <a class="topbar__logo" href="#top" aria-label="tenda home">
+          <img
+            src="assets/tenda_icon.png"
+            alt=""
+            width="32"
+            height="32"
+            decoding="async"
+          />
+          <span>tenda</span>
+        </a>
+
+        <nav class="topbar__nav" aria-label="Primary">
+          <a href="#top">Home</a>
+          <a href="#waitlist">Waitlist</a>
+          <a href="mailto:contact@heytenda.com">Contact</a>
+        </nav>
+
+        <div class="topbar__actions">
+          <a class="topbar__btn" href="#waitlist">Join waitlist</a>
+        </div>
+      </div>
+    </header>
+
     <main class="page">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__grid">
           <div class="hero__copy">
-            <div class="hero__brand">
-              <img
-                class="hero__logo"
-                src="assets/tenda_logo.png"
-                alt="Tenda"
-                width="1024"
-                height="683"
-                decoding="async"
-              />
-              <p class="hero__tagline" id="hero-title">Messages to Milestones</p>
-            </div>
-            <p class="hero__blurb">
+            <span class="news-pill">
+              <span class="news-pill__tag">News!</span>
+              <span class="news-pill__text">
+                Early access is open for mobile teams
+              </span>
+              <span class="news-pill__emoji" aria-hidden="true">🔥</span>
+            </span>
+
+            <h1 class="hero__headline" id="hero-title">
+              Messages to <em>Milestones.</em>
+            </h1>
+
+            <p class="hero__sub">
               An AI-native, mobile-first work operating system powered by AI
               agents for SMEs across the globe.
             </p>
-            <form class="waitlist" id="waitlist-form" novalidate>
-              <label class="visually-hidden" for="email">Email</label>
-              <input
-                class="waitlist__input"
-                id="email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                inputmode="email"
-                placeholder="you@company.com"
-                required
-              />
-              <button class="waitlist__btn" type="submit">
-                Join waitlist
-                <svg
-                  viewBox="0 0 20 20"
-                  width="16"
-                  height="16"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M4 10h11M11 5l5 5-5 5"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </form>
-            <p
-              class="waitlist__status"
-              id="waitlist-status"
-              role="status"
-              aria-live="polite"
-            ></p>
-            <a class="hero__url" href="mailto:contact@heytenda.com" id="waitlist">contact@heytenda.com</a>
+
+            <div class="hero__waitlist" id="waitlist">
+              <form class="waitlist" id="waitlist-form" novalidate>
+                <label class="visually-hidden" for="email">Email</label>
+                <input
+                  class="waitlist__input"
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  inputmode="email"
+                  placeholder="you@company.com"
+                  required
+                />
+                <button class="waitlist__btn" type="submit">
+                  Join waitlist
+                  <svg
+                    viewBox="0 0 20 20"
+                    width="16"
+                    height="16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 10h11M11 5l5 5-5 5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </form>
+              <p
+                class="waitlist__status"
+                id="waitlist-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </div>
           </div>
 
           <div class="hero__devices" aria-hidden="true">
-            <!-- Back phone: chat list -->
             <div class="phone phone--back">
               <div class="phone__frame">
                 <div class="phone__notch"></div>
@@ -169,7 +196,6 @@
               </div>
             </div>
 
-            <!-- Front phone: projects -->
             <div class="phone phone--front">
               <div class="phone__frame">
                 <div class="phone__notch"></div>
