@@ -139,24 +139,32 @@ svg {
   gap: clamp(0.5rem, 1.2dvh, 1rem);
 }
 
-.hero__logo {
+.hero__brand {
   width: clamp(240px, 46vw, 520px);
-  height: auto;
+  display: flex;
+  flex-direction: column;
   margin-left: -0.4rem;
 }
 
 @media (min-width: 960px) {
-  .hero__logo {
+  .hero__brand {
     width: clamp(320px, 38vw, 560px);
   }
 }
 
+.hero__logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .hero__tagline {
-  margin: -0.75rem 0 0.25rem;
+  /* Aligns with the tip of the big T curl (~44% of the logo image width). */
+  margin: -0.5rem 0 0.25rem 44.1%;
   font-family: var(--serif);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  font-size: clamp(1.25rem, 2.4vw, 1.85rem);
   line-height: 1.1;
   color: var(--jet);
   letter-spacing: -0.005em;
