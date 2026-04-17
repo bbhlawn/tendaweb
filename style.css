@@ -474,30 +474,34 @@ svg {
   filter: drop-shadow(0 30px 55px rgba(13, 36, 41, 0.18));
 }
 
+/* Mirrored pair: front phone tilts left, back phone tilts right,
+   they overlap in the middle like the reference layout. */
+
 .phone--front {
-  width: 56%;
-  max-width: 280px;
-  right: 18%;
-  top: 6%;
+  width: 55%;
+  max-width: 270px;
+  left: 4%;
+  top: 10%;
+  transform: rotate(-7deg);
   z-index: 3;
 }
 
 .phone--back {
-  width: 54%;
-  max-width: 260px;
-  right: -2%;
-  top: -4%;
-  transform: rotate(10deg);
+  width: 55%;
+  max-width: 270px;
+  right: 2%;
+  top: -2%;
+  transform: rotate(7deg);
   z-index: 2;
 }
 
 @media (max-width: 600px) {
   .phone--front {
-    right: 22%;
+    left: 2%;
   }
 
   .phone--back {
-    right: -6%;
+    right: -2%;
   }
 }
 
@@ -509,10 +513,6 @@ svg {
   background: var(--device-grey);
   padding: 7px;
   box-shadow: inset 0 0 0 2px rgba(247, 248, 244, 0.06);
-}
-
-.phone--back .phone__frame {
-  background: var(--device-green);
 }
 
 .phone__notch {
