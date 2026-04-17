@@ -206,10 +206,85 @@
                 <div class="phone__screen">
                   <div class="projects">
                     <header class="projects__head">
-                      <span class="projects__time">14:23</span>
-                      <span class="projects__signal"></span>
-                      <span class="projects__wifi"></span>
-                      <span class="projects__battery">100</span>
+                      <div class="status-left">
+                        <span class="status__time">3:39</span>
+                        <svg
+                          class="status__icon"
+                          viewBox="0 0 24 24"
+                          width="14"
+                          height="14"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M6 16h12l-1.5-2V11a4.5 4.5 0 0 0-3-4.24V6a1.5 1.5 0 0 0-3 0v.76A4.5 4.5 0 0 0 7.5 11v3L6 16z"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M10 19a2 2 0 0 0 4 0"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M4 4l16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                          />
+                        </svg>
+                      </div>
+                      <div class="status-right">
+                        <svg
+                          class="status__icon status__signal"
+                          viewBox="0 0 20 12"
+                          width="17"
+                          height="10"
+                          aria-hidden="true"
+                        >
+                          <rect x="0" y="8" width="3" height="4" rx="0.5" fill="currentColor" opacity="0.4" />
+                          <rect x="5" y="5" width="3" height="7" rx="0.5" fill="currentColor" opacity="0.4" />
+                          <rect x="10" y="2" width="3" height="10" rx="0.5" fill="currentColor" />
+                          <rect x="15" y="0" width="3" height="12" rx="0.5" fill="currentColor" />
+                        </svg>
+                        <svg
+                          class="status__icon status__wifi"
+                          viewBox="0 0 20 14"
+                          width="16"
+                          height="11"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M1.5 5A13 13 0 0 1 18.5 5"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M4.5 8A9 9 0 0 1 15.5 8"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M7.5 11A5 5 0 0 1 12.5 11"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                          />
+                          <circle cx="10" cy="13" r="1" fill="currentColor" />
+                        </svg>
+                        <span class="status__battery">
+                          <span class="status__battery-pct">83</span>
+                        </span>
+                      </div>
                     </header>
                     <div class="projects__toolbar">
                       <span class="projects__search"></span>
