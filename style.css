@@ -239,6 +239,31 @@ svg {
     clamp(1rem, 3vw, 2rem);
 }
 
+.page__contact {
+  align-self: flex-start;
+  max-width: var(--shell);
+  width: 100%;
+  margin-inline: auto;
+  padding-top: clamp(0.75rem, 2vw, 1.25rem);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--jet);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .page__contact:hover {
+    color: var(--tangerine);
+  }
+}
+
+.page__contact:focus-visible {
+  outline: 2px solid var(--tangerine);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 .hero {
   flex: 1;
   display: flex;
