@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="tenda — Messages to Milestones. AI-native, mobile-first work OS for teams everywhere."
+      content="tenda — An AI-native, mobile-first work operating system powered by AI agents for SMEs across the globe."
     />
-    <meta name="theme-color" content="#070e12" />
+    <meta name="theme-color" content="#f7f8f4" />
     <title>tenda — Messages to Milestones</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -20,222 +20,251 @@
   <body>
     <a class="skip-link" href="#waitlist">Skip to waitlist</a>
 
-    <header class="nav" id="top">
-      <div class="shell nav__inner">
-        <a class="nav__brand" href="#top" aria-label="tenda home">
-          <img
-            src="assets/tenda_logo_inverted.png"
-            alt="tenda"
-            width="112"
-            height="30"
-            decoding="async"
-          />
-        </a>
-
-        <div class="nav__cta">
-          <a class="btn btn--pill" href="#waitlist">Join waitlist</a>
-        </div>
-
-        <button
-          type="button"
-          class="nav__toggle"
-          id="nav-toggle"
-          aria-controls="drawer"
-          aria-expanded="false"
-          aria-label="Open menu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
-
-      <div class="drawer" id="drawer" aria-hidden="true">
-        <div class="drawer__panel">
-          <a href="#waitlist">Join waitlist</a>
-          <a href="mailto:contact@heytenda.com">Contact</a>
-        </div>
-      </div>
-    </header>
-
-    <main id="main">
+    <main class="page">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__glow" aria-hidden="true"></div>
-        <div class="shell hero__grid">
+        <div class="hero__grid">
           <div class="hero__copy">
-            <span class="chip">
-              <span class="chip__dot" aria-hidden="true"></span>
-              Future of work
-            </span>
-            <h1 class="hero__title" id="hero-title">
-              Messages to <span class="hero__title-accent">milestones.</span>
-              <span class="hero__title--muted">Built for mobile teams.</span>
-            </h1>
-            <p class="hero__lede">
-              Your tenda agent reads the chat, runs the workflow, and ships
-              proof of work—on any phone, any connection, anywhere.
+            <img
+              class="hero__logo"
+              src="assets/tenda_logo_light.png"
+              alt="tenda"
+              width="520"
+              height="180"
+              decoding="async"
+            />
+            <p class="hero__tagline" id="hero-title">Messages to Milestones</p>
+            <p class="hero__blurb">
+              An AI-native, mobile-first work operating system powered by AI
+              agents for SMEs across the globe.
             </p>
-            <div class="hero__waitlist" id="waitlist">
-              <form class="hero-waitlist__form" id="waitlist-form" novalidate>
-                <label class="visually-hidden" for="email">Email</label>
-                <input
-                  class="hero-waitlist__input"
-                  id="email"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  inputmode="email"
-                  placeholder="you@company.com"
-                  required
-                />
-                <button class="btn btn--primary hero-waitlist__btn" type="submit">
-                  Join
-                  <svg
-                    class="btn__arrow"
-                    viewBox="0 0 20 20"
-                    width="18"
-                    height="18"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M4 10h11M11 5l5 5-5 5"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
-              </form>
-              <p
-                class="hero-waitlist__status"
-                id="waitlist-status"
-                role="status"
-                aria-live="polite"
-              ></p>
-            </div>
+            <form class="waitlist" id="waitlist-form" novalidate>
+              <label class="visually-hidden" for="email">Email</label>
+              <input
+                class="waitlist__input"
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                inputmode="email"
+                placeholder="you@company.com"
+                required
+              />
+              <button class="waitlist__btn" type="submit">
+                Join waitlist
+                <svg
+                  viewBox="0 0 20 20"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 10h11M11 5l5 5-5 5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </form>
+            <p
+              class="waitlist__status"
+              id="waitlist-status"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <a class="hero__url" href="#top" id="waitlist">www.heytenda.com</a>
           </div>
 
-          <div class="hero__stage" aria-hidden="true">
-            <div class="hero__ring">
-              <svg viewBox="0 0 200 200" width="100%" height="100%">
-                <defs>
-                  <path
-                    id="ringPath"
-                    d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"
-                  />
-                </defs>
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="86"
-                  fill="none"
-                  stroke="rgba(247,248,244,0.08)"
-                  stroke-width="1"
-                />
-                <text class="hero__ring-text" fill="currentColor" font-size="13">
-                  <textPath href="#ringPath" startOffset="0">
-                    JOIN TENDA • MESSAGES TO MILESTONES • JOIN TENDA • MESSAGES TO MILESTONES •
-                  </textPath>
-                </text>
-                <g transform="translate(100 100)">
-                  <path
-                    d="M 0,-10 L 3,-3 L 10,0 L 3,3 L 0,10 L -3,3 L -10,0 L -3,-3 Z"
-                    fill="var(--tangerine)"
-                  />
-                </g>
-              </svg>
-            </div>
-
-            <div class="hero__proof">
-              <div class="proof__row">
-                <span class="proof__label">Project</span>
-                <span class="proof__value">Q1 Launch</span>
-              </div>
-              <div class="proof__bar">
-                <span class="proof__fill"></span>
-              </div>
-              <div class="proof__row proof__row--foot">
-                <span class="proof__meta">12 tasks · 4 owners</span>
-                <span class="proof__pct">+75%</span>
-              </div>
-            </div>
-
-            <div class="device">
-              <div class="device__frame">
-                <span class="device__btn device__btn--1"></span>
-                <span class="device__btn device__btn--2"></span>
-                <div class="device__notch"></div>
-                <div class="device__screen">
-                  <div class="app">
-                    <div class="app__status"></div>
-                    <header class="app__head">
-                      <img
-                        class="app__icon"
-                        src="assets/tenda_icon_2.png"
-                        alt=""
-                        width="16"
-                        height="16"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <span class="app__brand">tenda</span>
-                    </header>
-                    <div class="app__stat">
-                      <div class="app__stat-head">
-                        <span class="app__stat-title">Statistic</span>
-                        <span class="app__stat-range">1M</span>
+          <div class="hero__devices" aria-hidden="true">
+            <!-- Back phone: chat list -->
+            <div class="phone phone--back">
+              <div class="phone__frame">
+                <div class="phone__notch"></div>
+                <div class="phone__screen">
+                  <div class="chats">
+                    <header class="chats__head">
+                      <span class="chats__search"></span>
+                      <div class="chats__tabs">
+                        <span class="chats__tab chats__tab--on">Chats</span>
+                        <span class="chats__tab">Groups</span>
+                        <span class="chats__tab">Calls</span>
                       </div>
-                      <svg
-                        class="app__chart"
-                        viewBox="0 0 180 70"
-                        preserveAspectRatio="none"
-                        aria-hidden="true"
-                      >
-                        <defs>
-                          <linearGradient id="tGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="rgba(236,109,53,0.45)" />
-                            <stop offset="100%" stop-color="rgba(236,109,53,0)" />
-                          </linearGradient>
-                        </defs>
-                        <path
-                          d="M0,55 L18,48 L32,52 L48,38 L66,44 L86,28 L104,36 L124,20 L146,28 L166,14 L180,18 L180,70 L0,70 Z"
-                          fill="url(#tGrad)"
-                        />
-                        <path
-                          d="M0,55 L18,48 L32,52 L48,38 L66,44 L86,28 L104,36 L124,20 L146,28 L166,14 L180,18"
-                          fill="none"
-                          stroke="var(--tangerine)"
-                          stroke-width="1.8"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
+                      <span class="chats__add"></span>
+                    </header>
+                    <ul class="chat-list">
+                      <li class="chat-row">
+                        <span class="avatar avatar--a"></span>
+                        <div class="chat-row__body">
+                          <span class="chat-row__name">Regina</span>
+                          <span class="chat-row__msg">Vadzoka ropo haro yagadzirwa</span>
+                        </div>
+                      </li>
+                      <li class="chat-row">
+                        <span class="avatar avatar--b"></span>
+                        <div class="chat-row__body">
+                          <span class="chat-row__name">natalie</span>
+                          <span class="chat-row__msg">Kh it has auto updates</span>
+                        </div>
+                      </li>
+                      <li class="chat-row">
+                        <span class="avatar avatar--c"></span>
+                        <div class="chat-row__body">
+                          <span class="chat-row__name">bhlawn</span>
+                          <span class="chat-row__msg">alo</span>
+                        </div>
+                      </li>
+                      <li class="chat-row">
+                        <span class="avatar avatar--d"></span>
+                        <div class="chat-row__body">
+                          <span class="chat-row__name">peter</span>
+                          <span class="chat-row__msg">Hello</span>
+                        </div>
+                      </li>
+                      <li class="chat-row">
+                        <span class="avatar avatar--e"></span>
+                        <div class="chat-row__body">
+                          <span class="chat-row__name">patrice(ya)</span>
+                          <span class="chat-row__msg">Yo</span>
+                        </div>
+                      </li>
+                      <li class="chat-row">
+                        <span class="avatar avatar--f"></span>
+                        <div class="chat-row__body">
+                          <span class="chat-row__name">iPad</span>
+                          <span class="chat-row__msg">Investigate announcements</span>
+                        </div>
+                      </li>
+                      <li class="chat-row">
+                        <span class="avatar avatar--g"></span>
+                        <div class="chat-row__body">
+                          <span class="chat-row__name">wayne (You)</span>
+                          <span class="chat-row__msg">
+                            https://africandesignnetwork.org/program…
+                          </span>
+                        </div>
+                      </li>
+                      <li class="chat-row">
+                        <span class="avatar avatar--h"></span>
+                        <div class="chat-row__body">
+                          <span class="chat-row__name">Josh</span>
+                          <span class="chat-row__msg">Opa</span>
+                        </div>
+                      </li>
+                    </ul>
+                    <nav class="chats__tabbar">
+                      <span class="chats__tab-icon"></span>
+                      <span class="chats__tab-icon"></span>
+                      <span class="chats__tab-icon"></span>
+                      <span class="chats__tab-icon chats__tab-icon--on"></span>
+                      <span class="chats__tab-icon"></span>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Front phone: projects -->
+            <div class="phone phone--front">
+              <div class="phone__frame">
+                <div class="phone__notch"></div>
+                <div class="phone__screen">
+                  <div class="projects">
+                    <header class="projects__head">
+                      <span class="projects__time">14:23</span>
+                      <span class="projects__signal"></span>
+                      <span class="projects__wifi"></span>
+                      <span class="projects__battery">100</span>
+                    </header>
+                    <div class="projects__toolbar">
+                      <span class="projects__search"></span>
+                      <span class="projects__menu"></span>
                     </div>
-                    <ul class="app__rows">
-                      <li><span class="dot"></span>Tasks synced from chat</li>
-                      <li><span class="dot dot--on"></span>Report ready for review</li>
-                      <li><span class="dot"></span>3 milestones this week</li>
+                    <div class="projects__tabs">
+                      <span class="projects__tab projects__tab--on">Projects</span>
+                      <span class="projects__tab">Tasks</span>
+                      <span class="projects__tab">Calendar</span>
+                    </div>
+                    <ul class="projects__list">
+                      <li class="proj-card">
+                        <div class="proj-card__top">
+                          <div>
+                            <h3 class="proj-card__title">Archxenus 2.0</h3>
+                            <p class="proj-card__sub">onboard Ax users</p>
+                          </div>
+                          <span
+                            class="ring"
+                            style="--pct: 50; --ring-color: #c7e36a;"
+                          >
+                            <span class="ring__text">50%</span>
+                          </span>
+                        </div>
+                        <div class="proj-card__team">
+                          <span class="proj-card__label">Team</span>
+                          <div class="avatars">
+                            <span class="stack stack--a"></span>
+                            <span class="stack stack--b"></span>
+                            <span class="stack stack--plus">+</span>
+                          </div>
+                        </div>
+                        <div class="proj-card__foot">
+                          <span class="meta meta--muted">No deadline</span>
+                          <span class="meta">4 Tasks</span>
+                        </div>
+                      </li>
+
+                      <li class="proj-card">
+                        <div class="proj-card__top">
+                          <div>
+                            <h3 class="proj-card__title">De Beers Construction</h3>
+                          </div>
+                          <span
+                            class="ring"
+                            style="--pct: 0; --ring-color: #d3d6c2;"
+                          >
+                            <span class="ring__text">0%</span>
+                          </span>
+                        </div>
+                        <div class="proj-card__team">
+                          <span class="proj-card__label">Team</span>
+                          <div class="avatars">
+                            <span class="stack stack--c"></span>
+                            <span class="stack stack--plus">+</span>
+                          </div>
+                        </div>
+                        <div class="proj-card__foot">
+                          <span class="meta meta--muted">No deadline</span>
+                          <span class="meta">0 Tasks</span>
+                        </div>
+                      </li>
+
+                      <li class="proj-card">
+                        <div class="proj-card__top">
+                          <div>
+                            <h3 class="proj-card__title">Tenda</h3>
+                            <p class="proj-card__sub">build the OS for Africa</p>
+                          </div>
+                          <span
+                            class="ring"
+                            style="--pct: 86; --ring-color: #2bb673;"
+                          >
+                            <span class="ring__text">86%</span>
+                          </span>
+                        </div>
+                        <div class="proj-card__team">
+                          <span class="proj-card__label">Team</span>
+                        </div>
+                      </li>
                     </ul>
                   </div>
                 </div>
-                <div class="device__home"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-
-    <footer class="footer">
-      <div class="shell footer__inner">
-        <p class="footer__meta">
-          © <span id="year"></span> tenda ·
-          <a href="mailto:contact@heytenda.com">contact@heytenda.com</a>
-        </p>
-      </div>
-    </footer>
 
     <script src="script.js" defer></script>
   </body>
