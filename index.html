@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#waitlist">Skip to waitlist</a>
 
     <header class="nav" id="top">
       <div class="shell nav__inner">
@@ -31,12 +31,6 @@
             decoding="async"
           />
         </a>
-
-        <nav class="nav__links" aria-label="Primary">
-          <a href="#pillars">Product</a>
-          <a href="#why">Why tenda</a>
-          <a href="#faq">FAQ</a>
-        </nav>
 
         <div class="nav__cta">
           <a class="btn btn--pill" href="#waitlist">Join waitlist</a>
@@ -58,10 +52,8 @@
 
       <div class="drawer" id="drawer" aria-hidden="true">
         <div class="drawer__panel">
-          <a href="#pillars">Product</a>
-          <a href="#why">Why tenda</a>
-          <a href="#faq">FAQ</a>
-          <a class="btn btn--pill drawer__cta" href="#waitlist">Join waitlist</a>
+          <a href="#waitlist">Join waitlist</a>
+          <a href="mailto:contact@heytenda.com">Contact</a>
         </div>
       </div>
     </header>
@@ -76,33 +68,52 @@
               Future of work
             </span>
             <h1 class="hero__title" id="hero-title">
-              Messages to<br />Milestones.<br />
+              Messages to <span class="hero__title-accent">milestones.</span>
               <span class="hero__title--muted">Built for mobile teams.</span>
             </h1>
             <p class="hero__lede">
               Your tenda agent reads the chat, runs the workflow, and ships
               proof of work—on any phone, any connection, anywhere.
             </p>
-            <div class="hero__cta">
-              <a class="btn btn--primary btn--lg" href="#waitlist">
-                Join the waitlist
-                <svg
-                  class="btn__arrow"
-                  viewBox="0 0 20 20"
-                  width="18"
-                  height="18"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M4 10h11M11 5l5 5-5 5"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
+            <div class="hero__waitlist" id="waitlist">
+              <form class="hero-waitlist__form" id="waitlist-form" novalidate>
+                <label class="visually-hidden" for="email">Email</label>
+                <input
+                  class="hero-waitlist__input"
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  inputmode="email"
+                  placeholder="you@company.com"
+                  required
+                />
+                <button class="btn btn--primary hero-waitlist__btn" type="submit">
+                  Join
+                  <svg
+                    class="btn__arrow"
+                    viewBox="0 0 20 20"
+                    width="18"
+                    height="18"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 10h11M11 5l5 5-5 5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </form>
+              <p
+                class="hero-waitlist__status"
+                id="waitlist-status"
+                role="status"
+                aria-live="polite"
+              ></p>
             </div>
           </div>
 
@@ -215,118 +226,6 @@
           </div>
         </div>
       </section>
-
-      <section class="pillars" id="pillars" aria-labelledby="pillars-title">
-        <div class="shell pillars__inner">
-          <h2 class="section__title" id="pillars-title">Why teams pick tenda</h2>
-          <ul class="pillars__grid">
-            <li class="pill-card">
-              <span class="pill-card__num">01</span>
-              <h3 class="pill-card__h">Workforce analytics</h3>
-              <p class="pill-card__p">
-                Focus hours, output signals, and clarity on what is working—
-                without another dashboard to babysit.
-              </p>
-            </li>
-            <li class="pill-card pill-card--accent">
-              <span class="pill-card__num">02</span>
-              <h3 class="pill-card__h">Project intelligence</h3>
-              <p class="pill-card__p">
-                Files, milestones, calendars, and directories in one calm
-                surface—on any phone, anywhere.
-              </p>
-            </li>
-            <li class="pill-card">
-              <span class="pill-card__num">03</span>
-              <h3 class="pill-card__h">Automated workflow</h3>
-              <p class="pill-card__p">
-                Smart sequencing, deadlines, and bottleneck detection for
-                distributed teams on the move.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="why" id="why" aria-labelledby="why-title">
-        <div class="shell why__grid">
-          <div>
-            <h2 class="section__title" id="why-title">
-              Chat is already the<br />work layer.
-            </h2>
-            <p class="section__lede">
-              Tenda turns the conversation you already have on your phone into
-              operational clarity—tasks, reports, proof. No extra tools.
-            </p>
-          </div>
-          <ul class="why__list">
-            <li>AI agent reads threads and routes work</li>
-            <li>Auto-generated status and reports</li>
-            <li>Low-bandwidth, mobile-first by design</li>
-            <li>Verifiable proof of work records</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="waitlist" id="waitlist" aria-labelledby="waitlist-title">
-        <div class="shell waitlist__card">
-          <h2 class="waitlist__title" id="waitlist-title">Get early access</h2>
-          <p class="waitlist__lede">
-            We will only email when there is something worth your attention.
-          </p>
-          <form class="waitlist__form" id="waitlist-form" novalidate>
-            <label class="visually-hidden" for="email">Email</label>
-            <input
-              class="waitlist__input"
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              inputmode="email"
-              placeholder="you@company.com"
-              required
-            />
-            <button class="btn btn--primary waitlist__submit" type="submit">
-              Notify me
-              <svg
-                class="btn__arrow"
-                viewBox="0 0 20 20"
-                width="18"
-                height="18"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 10h11M11 5l5 5-5 5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-          </form>
-          <p class="waitlist__status" id="waitlist-status" role="status" aria-live="polite"></p>
-        </div>
-      </section>
-
-      <section class="faq" id="faq" aria-labelledby="faq-title">
-        <div class="shell faq__inner">
-          <h2 class="section__title" id="faq-title">FAQ</h2>
-          <details class="faq__item">
-            <summary>When does tenda launch?</summary>
-            <p>We are onboarding early teams now. Join the waitlist for access.</p>
-          </details>
-          <details class="faq__item">
-            <summary>Do I need to change how my team works?</summary>
-            <p>No. Tenda feels like the chat app you already use—zero setup anxiety.</p>
-          </details>
-          <details class="faq__item">
-            <summary>Does it work on slow networks?</summary>
-            <p>Yes. Tenda is engineered for mobile-first, low-bandwidth environments.</p>
-          </details>
-        </div>
-      </section>
     </main>
 
     <footer class="footer">
@@ -335,7 +234,6 @@
           © <span id="year"></span> tenda ·
           <a href="mailto:contact@heytenda.com">contact@heytenda.com</a>
         </p>
-        <a class="footer__top" href="#top">Back to top</a>
       </div>
     </footer>
 
