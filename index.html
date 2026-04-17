@@ -70,15 +70,16 @@
 
             <div class="hero__waitlist" id="waitlist">
               <form class="waitlist" id="waitlist-form" novalidate>
-                <label class="visually-hidden" for="email">Email</label>
+                <label class="visually-hidden" for="contact">
+                  Email or WhatsApp number
+                </label>
                 <input
                   class="waitlist__input"
-                  id="email"
-                  name="email"
-                  type="email"
+                  id="contact"
+                  name="contact"
+                  type="text"
                   autocomplete="email"
-                  inputmode="email"
-                  placeholder="you@company.com"
+                  placeholder="Email or WhatsApp (+1 555 123 4567)"
                   required
                 />
                 <button class="waitlist__btn" type="submit">
@@ -100,6 +101,9 @@
                   </svg>
                 </button>
               </form>
+              <p class="waitlist__hint">
+                Drop your email or WhatsApp number — we'll reach out.
+              </p>
               <p
                 class="waitlist__status"
                 id="waitlist-status"

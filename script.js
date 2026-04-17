@@ -48,17 +48,47 @@
 
   var form = document.getElementById("waitlist-form");
   var statusEl = document.getElementById("waitlist-status");
+
+  function classify(value) {
+    var v = (value || "").trim();
+    if (!v) return { kind: "empty" };
+    if (v.indexOf("@") !== -1) {
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      return { kind: emailOk ? "email" : "invalid-email", value: v };
+    }
+    var digits = v.replace(/[\s\-().]/g, "");
+    var phoneOk = /^\+?\d{7,15}$/.test(digits);
+    return {
+      kind: phoneOk ? "phone" : "invalid-phone",
+      value: phoneOk ? digits : v,
+    };
+  }
+
   if (form && statusEl) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var input = document.getElementById("email");
+      var input = document.getElementById("contact");
       if (!input) return;
-      if (!input.checkValidity()) {
-        statusEl.textContent = "Please enter a valid email.";
+      var result = classify(input.value);
+      if (result.kind === "empty") {
+        statusEl.textContent = "Please enter your email or WhatsApp number.";
         input.focus();
         return;
       }
-      statusEl.textContent = "You are on the list—we will be in touch.";
+      if (result.kind === "invalid-email") {
+        statusEl.textContent = "That email doesn't look right — try again.";
+        input.focus();
+        return;
+      }
+      if (result.kind === "invalid-phone") {
+        statusEl.textContent =
+          "Please include your country code, e.g. +1 555 123 4567.";
+        input.focus();
+        return;
+      }
+      var label = result.kind === "email" ? "email" : "WhatsApp";
+      statusEl.textContent =
+        "You're on the list — we'll reach out via " + label + ".";
       form.reset();
     });
   }

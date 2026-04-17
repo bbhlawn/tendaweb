@@ -415,6 +415,12 @@ svg {
   }
 }
 
+.waitlist__hint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
 .waitlist__status {
   margin: 0;
   min-height: 1.1rem;
