@@ -121,19 +121,15 @@ svg {
 .topbar__logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  color: var(--jet);
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
   text-decoration: none;
-  padding: 0.25rem 0.35rem 0.25rem 0;
+  padding: 0.25rem 0;
   border-radius: 8px;
 }
 
 .topbar__logo img {
-  width: 28px;
-  height: 28px;
+  width: auto;
+  height: clamp(28px, 4vw, 40px);
+  display: block;
 }
 
 .topbar__logo:focus-visible {
@@ -878,9 +874,5 @@ svg {
 @media (max-width: 600px) {
   .hero__devices {
     aspect-ratio: 1 / 0.95;
-  }
-
-  .topbar__logo span {
-    font-size: 1rem;
   }
 }
