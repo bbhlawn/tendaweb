@@ -543,14 +543,14 @@ svg {
   flex-direction: column;
   height: 100%;
   background: var(--cream);
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .projects__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.65rem 0.9rem 0.2rem;
+  padding: 0.45rem 0.7rem 0.15rem;
   color: var(--jet);
 }
 
@@ -558,11 +558,11 @@ svg {
 .status-right {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.28rem;
 }
 
 .status__time {
-  font-size: 0.88rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
@@ -581,28 +581,28 @@ svg {
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 0.3rem 0 0.35rem;
-  height: 13px;
-  min-width: 26px;
+  padding: 0 0.22rem 0 0.26rem;
+  height: 10px;
+  min-width: 20px;
   background: var(--jet);
-  border-radius: 4px;
+  border-radius: 3px;
   color: #fff;
 }
 
 .status__battery::after {
   content: "";
   position: absolute;
-  right: -2.5px;
+  right: -2px;
   top: 50%;
   transform: translateY(-50%);
-  width: 2px;
-  height: 5px;
+  width: 1.5px;
+  height: 4px;
   background: var(--jet);
   border-radius: 0 1px 1px 0;
 }
 
 .status__battery-pct {
-  font-size: 0.58rem;
+  font-size: 0.5rem;
   font-weight: 700;
   color: #fff;
   letter-spacing: -0.02em;
@@ -612,27 +612,27 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.25rem 0.85rem 0.35rem;
+  padding: 0.2rem 0.7rem 0.25rem;
 }
 
 .projects__search,
 .projects__menu {
-  width: 16px;
-  height: 16px;
-  border-radius: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 5px;
   background: rgba(13, 36, 41, 0.08);
 }
 
 .projects__tabs {
   display: flex;
-  gap: 0.35rem;
-  padding: 0.1rem 0.75rem 0.5rem;
+  gap: 0.3rem;
+  padding: 0.05rem 0.6rem 0.4rem;
 }
 
 .projects__tab {
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   font-weight: 600;
-  padding: 0.3rem 0.7rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 999px;
   color: var(--muted);
   background: transparent;
@@ -648,17 +648,17 @@ svg {
 .projects__list {
   list-style: none;
   margin: 0;
-  padding: 0 0.55rem 0.5rem;
+  padding: 0 0.45rem 0.45rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.3rem;
   flex: 1;
   min-height: 0;
 }
 
 .proj-card {
-  padding: 0.55rem 0.6rem 0.5rem;
-  border-radius: 14px;
+  padding: 0.45rem 0.5rem 0.4rem;
+  border-radius: 12px;
   background: #fff;
   box-shadow: 0 1px 0 rgba(13, 36, 41, 0.05);
 }
@@ -667,27 +667,27 @@ svg {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .proj-card__title {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 700;
   color: var(--jet);
 }
 
 .proj-card__sub {
-  margin: 0.1rem 0 0;
-  font-size: 0.58rem;
+  margin: 0.08rem 0 0;
+  font-size: 0.52rem;
   color: var(--muted);
 }
 
 .ring {
   --pct: 0;
   --ring-color: #d3d6c2;
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -710,7 +710,7 @@ svg {
 
 .ring__text {
   position: relative;
-  font-size: 0.54rem;
+  font-size: 0.48rem;
   font-weight: 700;
   color: var(--jet);
 }
@@ -718,12 +718,12 @@ svg {
 .proj-card__team {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.35rem;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
 }
 
 .proj-card__label {
-  font-size: 0.58rem;
+  font-size: 0.52rem;
   color: var(--muted);
   font-weight: 600;
 }
@@ -734,13 +734,13 @@ svg {
 }
 
 .stack {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 999px;
   border: 1.5px solid #fff;
   margin-left: -4px;
   background: var(--jet);
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -773,13 +773,13 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 0.35rem;
-  padding-top: 0.35rem;
+  margin-top: 0.3rem;
+  padding-top: 0.3rem;
   border-top: 1px dashed var(--hair);
 }
 
 .meta {
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   font-weight: 600;
   color: var(--jet);
 }
@@ -795,35 +795,35 @@ svg {
   flex-direction: column;
   height: 100%;
   background: #fff;
-  font-size: 10px;
-  padding-top: 1.25rem;
+  font-size: 9px;
+  padding-top: 0.9rem;
 }
 
 .chats__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.3rem;
-  padding: 0.3rem 0.7rem 0.35rem;
+  gap: 0.25rem;
+  padding: 0.25rem 0.55rem 0.3rem;
 }
 
 .chats__search,
 .chats__add {
-  width: 16px;
-  height: 16px;
-  border-radius: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 5px;
   background: rgba(13, 36, 41, 0.08);
 }
 
 .chats__tabs {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 .chats__tab {
-  font-size: 0.58rem;
+  font-size: 0.52rem;
   font-weight: 600;
-  padding: 0.25rem 0.55rem;
+  padding: 0.22rem 0.5rem;
   border-radius: 999px;
   color: var(--muted);
   background: rgba(13, 36, 41, 0.05);
@@ -837,26 +837,26 @@ svg {
 .chat-list {
   list-style: none;
   margin: 0;
-  padding: 0 0.5rem;
+  padding: 0 0.4rem;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.05rem;
   flex: 1;
   overflow: hidden;
 }
 
 .chat-row {
   display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 0.4rem;
   align-items: center;
-  padding: 0.3rem 0.35rem;
+  padding: 0.22rem 0.3rem;
   border-bottom: 1px solid rgba(13, 36, 41, 0.05);
 }
 
 .avatar {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 999px;
   background: #cfcfcf;
 }
@@ -877,13 +877,13 @@ svg {
 }
 
 .chat-row__name {
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   font-weight: 700;
   color: var(--jet);
 }
 
 .chat-row__msg {
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
@@ -894,14 +894,14 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0.35rem 0.5rem 0.5rem;
+  padding: 0.28rem 0.4rem 0.4rem;
   border-top: 1px solid rgba(13, 36, 41, 0.05);
 }
 
 .chats__tab-icon {
-  width: 16px;
-  height: 16px;
-  border-radius: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 5px;
   background: rgba(13, 36, 41, 0.12);
 }
 
