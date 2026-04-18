@@ -536,6 +536,17 @@ svg {
   background: #fff;
 }
 
+.phone__screen--splash {
+  background: #14232a;
+}
+
+.phone__splash {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* ───── Projects screen (front phone) ───── */
 
 .projects {
