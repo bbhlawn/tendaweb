@@ -322,14 +322,61 @@ svg {
   }
 }
 
+.waitlist__field {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  border-radius: 14px;
+  border: 1px solid var(--hair-2);
+  background: rgba(255, 255, 255, 0.8);
+  transition: border-color 0.18s ease;
+}
+
+.waitlist__field:focus-within {
+  outline: 2px solid var(--tangerine);
+  outline-offset: 2px;
+  border-color: rgba(236, 109, 53, 0.5);
+}
+
+.waitlist__dial {
+  flex-shrink: 0;
+  min-height: 48px;
+  padding: 0 0.75rem 0 0.9rem;
+  border: 0;
+  border-right: 1px solid var(--hair);
+  background: transparent;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--jet);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path fill='none' stroke='%230d2429' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' d='M1 1.5l5 5 5-5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.55rem center;
+  background-size: 10px;
+  padding-right: 1.6rem;
+  border-radius: 14px 0 0 14px;
+}
+
+.waitlist__dial[hidden] {
+  display: none;
+}
+
+.waitlist__dial:focus {
+  outline: none;
+}
+
 .waitlist__input {
   flex: 1;
   min-width: 0;
   min-height: 48px;
   padding: 0.6rem 1.1rem;
   border-radius: 14px;
-  border: 1px solid var(--hair-2);
-  background: rgba(255, 255, 255, 0.8);
+  border: 0;
+  background: transparent;
   font: inherit;
   font-size: 0.95rem;
   color: var(--jet);
@@ -339,10 +386,13 @@ svg {
   color: var(--muted-2);
 }
 
-.waitlist__input:focus-visible {
-  outline: 2px solid var(--tangerine);
-  outline-offset: 2px;
-  border-color: rgba(236, 109, 53, 0.5);
+.waitlist__input:focus {
+  outline: none;
+}
+
+.waitlist__dial:not([hidden]) + label + .waitlist__input {
+  padding-left: 0.6rem;
+  border-radius: 0 14px 14px 0;
 }
 
 .waitlist__btn {

@@ -48,6 +48,33 @@
 
   var form = document.getElementById("waitlist-form");
   var statusEl = document.getElementById("waitlist-status");
+  var input = document.getElementById("contact");
+  var dial = document.getElementById("dial-code");
+
+  function looksLikePhone(v) {
+    v = (v || "").trim();
+    if (!v) return null;
+    if (v.indexOf("@") !== -1) return false;
+    return /^[\d+(\s-]/.test(v);
+  }
+
+  function syncDial() {
+    if (!input || !dial) return;
+    var phone = looksLikePhone(input.value);
+    if (phone === null) {
+      // Empty: hide dial so the bare placeholder reads correctly.
+      dial.hidden = true;
+      input.setAttribute("inputmode", "text");
+      return;
+    }
+    dial.hidden = !phone;
+    input.setAttribute("inputmode", phone ? "tel" : "text");
+  }
+
+  if (input) {
+    input.addEventListener("input", syncDial);
+    syncDial();
+  }
 
   function classify(value) {
     var v = (value || "").trim();
@@ -56,19 +83,26 @@
       var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
       return { kind: emailOk ? "email" : "invalid-email", value: v };
     }
-    var digits = v.replace(/[\s\-().]/g, "");
-    var phoneOk = /^\+?\d{7,15}$/.test(digits);
+    // Phone: if user already typed a + prefix, respect it; otherwise prepend
+    // the dial code selected from the dropdown.
+    var raw = v.replace(/[\s\-().]/g, "");
+    var prefixed;
+    if (raw.charAt(0) === "+") {
+      prefixed = raw;
+    } else {
+      var code = dial && !dial.hidden ? dial.value : "";
+      prefixed = (code || "") + raw;
+    }
+    var phoneOk = /^\+\d{7,15}$/.test(prefixed);
     return {
       kind: phoneOk ? "phone" : "invalid-phone",
-      value: phoneOk ? digits : v,
+      value: phoneOk ? prefixed : v,
     };
   }
 
-  if (form && statusEl) {
+  if (form && statusEl && input) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var input = document.getElementById("contact");
-      if (!input) return;
       var result = classify(input.value);
       if (result.kind === "empty") {
         statusEl.textContent = "Please enter your email or WhatsApp number.";
@@ -82,7 +116,7 @@
       }
       if (result.kind === "invalid-phone") {
         statusEl.textContent =
-          "Please include your country code, e.g. +1 555 123 4567.";
+          "Please enter a valid number (pick your country code on the left).";
         input.focus();
         return;
       }
@@ -90,6 +124,7 @@
       statusEl.textContent =
         "You're on the list — we'll reach out via " + label + ".";
       form.reset();
+      syncDial();
     });
   }
 })();
