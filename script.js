@@ -148,13 +148,24 @@
     trigger.addEventListener("click", function (e) {
       var url = trigger.getAttribute("data-calendly-url");
       if (!url) return;
-      // Mobile: do nothing — let the browser open target="_blank" in a
-      // new tab (separate from the Tenda tab).
-      if (isMobileLikeViewport()) return;
-      // Desktop: launch the in-page popup.
-      if (openCalendly(url)) e.preventDefault();
-      // Else: fall through to the href so the link still works if the
-      // Calendly script hasn't finished loading yet.
+
+      // Always handle the click ourselves so the behavior is deterministic
+      // (avoids races with browser default link handling on slow connections).
+      e.preventDefault();
+
+      // Mobile / touch: open Calendly in a brand new browser tab so the
+      // Tenda tab stays put and the user can press Back to return.
+      if (isMobileLikeViewport()) {
+        window.open(url, "_blank", "noopener");
+        return;
+      }
+
+      // Desktop: try the in-page popup widget. If the Calendly script
+      // hasn't loaded yet (slow network, ad blocker, etc.), fall back
+      // to opening Calendly in a new tab so the link is never dead.
+      if (!openCalendly(url)) {
+        window.open(url, "_blank", "noopener");
+      }
     });
   });
 

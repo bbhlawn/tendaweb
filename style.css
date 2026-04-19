@@ -1207,8 +1207,18 @@ svg {
   border-bottom: 1px solid rgba(245, 243, 236, 0.08);
 }
 
-.topbar--welcome .topbar__logo img {
-  filter: brightness(0) invert(1);
+.topbar--welcome .topbar__logo--mark {
+  width: auto;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.topbar--welcome .topbar__logo--mark img {
+  width: auto;
+  height: 100%;
+  max-height: 40px;
+  display: block;
 }
 
 .welcome {
