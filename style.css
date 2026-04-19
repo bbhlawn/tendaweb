@@ -989,6 +989,29 @@ svg {
     /* Copy renders above the phone stage — text overlaps phones. */
     z-index: 5;
     margin-top: -5rem;
+    /* Page-color backdrop so the copy stays legible where it overlaps
+       the phone visuals. Extends full-bleed past the page gutter via
+       negative margin + matching padding. */
+    background: var(--porcelain);
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 1.5rem var(--gutter) 0;
+  }
+
+  /* Soft fade on the top edge so the cream block blends into the
+     phone visuals above instead of looking like a hard cut. */
+  .hero__copy::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1.25rem;
+    height: 1.25rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(245, 243, 236, 0),
+      var(--porcelain)
+    );
+    pointer-events: none;
   }
 }
 
