@@ -543,9 +543,33 @@ svg {
   width: 100%;
   aspect-ratio: 260 / 540;
   border-radius: 38px;
-  background: var(--device-grey);
+  /* Metallic body: dark center fading to silver at the edges so the
+     side rails read as a polished aluminum/titanium band. */
+  background:
+    linear-gradient(
+      135deg,
+      #6b7079 0%,
+      #2f343b 7%,
+      #0c0e11 22%,
+      #0c0e11 78%,
+      #2f343b 93%,
+      #6b7079 100%
+    );
   padding: 7px;
-  box-shadow: inset 0 0 0 2px rgba(247, 248, 244, 0.06);
+  box-shadow:
+    /* Bright silver lining hugging the outer edge */
+    0 0 0 0.75px rgba(225, 229, 234, 0.95),
+    /* Thin dark separator so the silver pops against the page */
+    0 0 0 2px rgba(0, 0, 0, 0.45),
+    /* Top highlight — light hitting the upper rail */
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.28),
+    /* Bottom shadow — depth on the lower rail */
+    inset 0 -1.5px 1.5px rgba(0, 0, 0, 0.6),
+    /* Side highlight + shadow for chamfered edge feel */
+    inset 1px 0 0.5px rgba(255, 255, 255, 0.1),
+    inset -1px 0 0.5px rgba(0, 0, 0, 0.35),
+    /* Inner bezel ring where the screen sits */
+    inset 0 0 0 2px rgba(255, 255, 255, 0.05);
 }
 
 .phone__notch {
