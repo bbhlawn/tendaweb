@@ -249,7 +249,7 @@
           // `label` retained as a query param so we could greet them by
           // channel later if useful.
           var qp = "?via=" + encodeURIComponent(label);
-          window.location.assign("welcome.html" + qp);
+          window.location.assign("/welcome/" + qp);
         });
     });
   }
