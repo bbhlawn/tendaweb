@@ -100,6 +100,24 @@
     };
   }
 
+  var GOOGLE_FORM_ID =
+    "1FAIpQLScWWJ4OTzMFOAzxPSzkWRJuR6I_C6Cp6Rav4YeMwLX-QSDftw";
+  var GOOGLE_CONTACT_ENTRY = "entry.854632602";
+
+  function submitToGoogleForm(value) {
+    var url =
+      "https://docs.google.com/forms/d/e/" +
+      GOOGLE_FORM_ID +
+      "/formResponse";
+    var body = new FormData();
+    body.append(GOOGLE_CONTACT_ENTRY, value);
+    return fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      body: body,
+    });
+  }
+
   if (form && statusEl && input) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -120,11 +138,24 @@
         input.focus();
         return;
       }
+
+      var submitBtn = form.querySelector(".waitlist__btn");
+      if (submitBtn) submitBtn.disabled = true;
+      statusEl.textContent = "Adding you to the list…";
+
       var label = result.kind === "email" ? "email" : "WhatsApp";
-      statusEl.textContent =
-        "You're on the list — we'll reach out via " + label + ".";
-      form.reset();
-      syncDial();
+
+      submitToGoogleForm(result.value)
+        .catch(function () {
+          // no-cors hides errors; we optimistically treat as success.
+        })
+        .then(function () {
+          statusEl.textContent =
+            "You're on the list — we'll reach out via " + label + ".";
+          form.reset();
+          syncDial();
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 })();
