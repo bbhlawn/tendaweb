@@ -509,6 +509,72 @@ svg {
   color: var(--muted);
 }
 
+.waitlist__success {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 30rem;
+  min-height: 56px;
+  padding: 0.75rem 1.4rem;
+  border-radius: 14px;
+  border: 0;
+  background: var(--jet);
+  color: var(--porcelain);
+  font: inherit;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+  animation: waitlistSuccessIn 0.32s ease both;
+}
+
+.waitlist__success[hidden] {
+  display: none;
+}
+
+.waitlist__success-text {
+  display: inline;
+  line-height: 1.35;
+}
+
+.waitlist__success-text strong {
+  font-weight: 700;
+  margin-right: 0.35rem;
+}
+
+.waitlist__success:focus-visible {
+  outline: 2px solid var(--jet);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .waitlist__success:hover {
+    background: #071418;
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes waitlistSuccessIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waitlist__success {
+    animation: none;
+  }
+}
+
 /* ───── Devices stage (preserved) ───── */
 
 .hero__devices {

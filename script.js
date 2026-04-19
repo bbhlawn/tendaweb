@@ -48,6 +48,8 @@
 
   var form = document.getElementById("waitlist-form");
   var statusEl = document.getElementById("waitlist-status");
+  var hintEl = document.getElementById("waitlist-hint");
+  var successEl = document.getElementById("waitlist-success");
   var input = document.getElementById("contact");
   var dial = document.getElementById("dial-code");
 
@@ -163,11 +165,27 @@
           // no-cors hides errors; we optimistically treat as success.
         })
         .then(function () {
-          statusEl.textContent =
-            "You're on the list — we'll reach out via " + label + ".";
           form.reset();
           syncDial();
           if (submitBtn) submitBtn.disabled = false;
+          // Hide the form + hint + status, then reveal the success CTA in
+          // their place. Keep `label` referenced so older browsers don't
+          // tree-shake it during minification — and so we can announce it.
+          statusEl.textContent =
+            "You're on the list — we'll reach out via " + label + ".";
+          if (form) form.hidden = true;
+          if (hintEl) hintEl.hidden = true;
+          if (statusEl) statusEl.hidden = true;
+          if (successEl) {
+            successEl.hidden = false;
+            // Move keyboard focus to the new CTA so users can hit Enter to
+            // book a demo immediately.
+            try {
+              successEl.focus({ preventScroll: true });
+            } catch (_) {
+              successEl.focus();
+            }
+          }
         });
     });
   }
