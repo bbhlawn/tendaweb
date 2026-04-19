@@ -102,14 +102,57 @@
     };
   }
 
+  // On mobile (small viewport OR touch primary input), Calendly's popup
+  // widget is cramped and lacks a clear close button — so we let the link
+  // open in a new browser tab via the existing target="_blank". Hitting
+  // Back on the new tab returns to Tenda instead of dropping the user out.
+  function isMobileLikeViewport() {
+    return (
+      window.matchMedia("(max-width: 768px)").matches ||
+      window.matchMedia("(pointer: coarse)").matches
+    );
+  }
+
+  var calendlyOpen = false;
+
+  function openCalendly(url) {
+    if (!window.Calendly || typeof window.Calendly.initPopupWidget !== "function") {
+      return false;
+    }
+    window.Calendly.initPopupWidget({ url: url });
+    calendlyOpen = true;
+    // Push a history entry so the browser Back button closes the popup
+    // instead of leaving the page.
+    try {
+      history.pushState({ calendly: true }, "", location.href);
+    } catch (_) {}
+    return true;
+  }
+
+  function closeCalendly() {
+    if (
+      window.Calendly &&
+      typeof window.Calendly.closePopupWidget === "function"
+    ) {
+      window.Calendly.closePopupWidget();
+    }
+    calendlyOpen = false;
+  }
+
+  window.addEventListener("popstate", function () {
+    if (calendlyOpen) closeCalendly();
+  });
+
   var calendlyTriggers = document.querySelectorAll("[data-calendly-url]");
   calendlyTriggers.forEach(function (trigger) {
     trigger.addEventListener("click", function (e) {
       var url = trigger.getAttribute("data-calendly-url");
-      if (window.Calendly && url) {
-        e.preventDefault();
-        window.Calendly.initPopupWidget({ url: url });
-      }
+      if (!url) return;
+      // Mobile: do nothing — let the browser open target="_blank" in a
+      // new tab (separate from the Tenda tab).
+      if (isMobileLikeViewport()) return;
+      // Desktop: launch the in-page popup.
+      if (openCalendly(url)) e.preventDefault();
       // Else: fall through to the href so the link still works if the
       // Calendly script hasn't finished loading yet.
     });
