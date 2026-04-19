@@ -208,28 +208,58 @@
           // no-cors hides errors; we optimistically treat as success.
         })
         .then(function () {
-          form.reset();
-          syncDial();
-          if (submitBtn) submitBtn.disabled = false;
-          // Hide the form + hint + status, then reveal the success CTA in
-          // their place. Keep `label` referenced so older browsers don't
-          // tree-shake it during minification — and so we can announce it.
-          statusEl.textContent =
-            "You're on the list — we'll reach out via " + label + ".";
-          if (form) form.hidden = true;
-          if (hintEl) hintEl.hidden = true;
-          if (statusEl) statusEl.hidden = true;
-          if (successEl) {
-            successEl.hidden = false;
-            // Move keyboard focus to the new CTA so users can hit Enter to
-            // book a demo immediately.
-            try {
-              successEl.focus({ preventScroll: true });
-            } catch (_) {
-              successEl.focus();
-            }
-          }
+          // Redirect to the dedicated welcome page so users get the full
+          // post-signup experience (book demo / follow build / share).
+          // `label` retained as a query param so we could greet them by
+          // channel later if useful.
+          var qp = "?via=" + encodeURIComponent(label);
+          window.location.assign("welcome.html" + qp);
         });
+    });
+  }
+
+  // ────────────────────────────────────────────────────────────────────
+  // Welcome page — share card
+  // ────────────────────────────────────────────────────────────────────
+  var copyBtn = document.getElementById("share-copy");
+  var copyLabel = document.getElementById("share-copy-label");
+  var shareUrlEl = document.getElementById("share-url");
+
+  if (copyBtn && shareUrlEl) {
+    copyBtn.addEventListener("click", function () {
+      var url = shareUrlEl.value || shareUrlEl.getAttribute("value") || "";
+      var done = function () {
+        copyBtn.classList.add("is-copied");
+        if (copyLabel) copyLabel.textContent = "Copied!";
+        setTimeout(function () {
+          copyBtn.classList.remove("is-copied");
+          if (copyLabel) copyLabel.textContent = "Copy";
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard
+          .writeText(url)
+          .then(done)
+          .catch(function () {
+            // Fallback: select-and-execCommand for older browsers.
+            try {
+              shareUrlEl.removeAttribute("readonly");
+              shareUrlEl.select();
+              document.execCommand("copy");
+              shareUrlEl.setAttribute("readonly", "true");
+              done();
+            } catch (_) {}
+          });
+      } else {
+        try {
+          shareUrlEl.removeAttribute("readonly");
+          shareUrlEl.select();
+          document.execCommand("copy");
+          shareUrlEl.setAttribute("readonly", "true");
+          done();
+        } catch (_) {}
+      }
     });
   }
 })();
