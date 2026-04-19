@@ -100,6 +100,19 @@
     };
   }
 
+  var calendlyTriggers = document.querySelectorAll("[data-calendly-url]");
+  calendlyTriggers.forEach(function (trigger) {
+    trigger.addEventListener("click", function (e) {
+      var url = trigger.getAttribute("data-calendly-url");
+      if (window.Calendly && url) {
+        e.preventDefault();
+        window.Calendly.initPopupWidget({ url: url });
+      }
+      // Else: fall through to the href so the link still works if the
+      // Calendly script hasn't finished loading yet.
+    });
+  });
+
   var GOOGLE_FORM_ID =
     "1FAIpQLScWWJ4OTzMFOAzxPSzkWRJuR6I_C6Cp6Rav4YeMwLX-QSDftw";
   var GOOGLE_CONTACT_ENTRY = "entry.854632602";
