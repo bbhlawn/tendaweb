@@ -1008,19 +1008,19 @@ svg {
 
   .hero__copy {
     order: 2;
-    max-width: 100%;
+    max-width: none;
     position: relative;
     /* Force a fresh stacking context above the phone stage so the
        cream backdrop always paints on top, regardless of grid quirks. */
     isolation: isolate;
     z-index: 5;
     margin-top: -5rem;
-    /* Solid cream backing covers the phones in the overlap area.
-       The body background (also cream on mobile, see below) carries
-       the same color through the page edges and the footer, so the
-       block flows seamlessly instead of ending in a visible box. */
+    /* Full-bleed cream backdrop: break out of the page's gutter padding
+       so the background reaches viewport edge-to-edge on both sides,
+       while keeping the inner text at the original gutter inset. */
     background: var(--cream);
-    padding-top: 1.5rem;
+    margin-inline: calc(50% - 50vw);
+    padding: 1.5rem var(--gutter) 0;
   }
 
   /* Whole mobile page sits on cream so the copy backdrop bleeds to
