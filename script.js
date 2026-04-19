@@ -102,17 +102,95 @@
     };
   }
 
-  // Calendly: always open in a new browser tab (popup widget was getting
-  // stuck on the loading spinner on desktop). New tab works reliably
-  // everywhere and Calendly's full booking page is actually nicer than
-  // the cramped popup anyway. Back button returns the user to Tenda.
+  // ────────────────────────────────────────────────────────────────────
+  // Calendly: custom in-page modal with a direct iframe to Calendly.
+  // We avoid Calendly's official "PopupWidget" because it has been
+  // observed to hang on the loading spinner on some desktop browsers.
+  // A plain iframe + our own modal chrome is the most reliable approach.
+  // ────────────────────────────────────────────────────────────────────
+  var calModal = document.getElementById("cal-modal");
+  var calModalIframe = document.getElementById("cal-modal-iframe");
+  var calModalLoader = document.getElementById("cal-modal-loader");
+  var calModalCloses = document.querySelectorAll("[data-cal-close]");
+  var calModalOpen = false;
+
+  function buildCalUrl(url) {
+    var sep = url.indexOf("?") === -1 ? "?" : "&";
+    return (
+      url +
+      sep +
+      "embed_domain=" +
+      encodeURIComponent(location.hostname || "heytenda.com") +
+      "&embed_type=Inline&hide_event_type_details=0&hide_gdpr_banner=1"
+    );
+  }
+
+  function openCalendlyModal(url) {
+    if (!calModal || !calModalIframe) {
+      // No modal markup on this page — fall back to a new tab so the
+      // booking link is never dead.
+      window.open(url, "_blank", "noopener");
+      return;
+    }
+    if (calModalLoader) calModalLoader.hidden = false;
+    calModalIframe.onload = function () {
+      if (calModalLoader) calModalLoader.hidden = true;
+    };
+    // Force a reload even if it's the same URL — fresh embed every open.
+    calModalIframe.src = buildCalUrl(url);
+    calModal.hidden = false;
+    document.body.classList.add("cal-locked");
+    calModalOpen = true;
+    try {
+      history.pushState({ calOpen: true }, "", location.href);
+    } catch (_) {}
+    // Move focus to the close button so ESC/Enter is wired up immediately.
+    var closer = calModal.querySelector(".cal-modal__close");
+    if (closer) {
+      try {
+        closer.focus({ preventScroll: true });
+      } catch (_) {
+        closer.focus();
+      }
+    }
+  }
+
+  function closeCalendlyModal(viaPopstate) {
+    if (!calModalOpen || !calModal) return;
+    calModal.hidden = true;
+    if (calModalIframe) calModalIframe.src = "about:blank";
+    document.body.classList.remove("cal-locked");
+    calModalOpen = false;
+    if (!viaPopstate && history.state && history.state.calOpen) {
+      try {
+        history.back();
+      } catch (_) {}
+    }
+  }
+
+  calModalCloses.forEach(function (el) {
+    el.addEventListener("click", function () {
+      closeCalendlyModal(false);
+    });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && calModalOpen) {
+      closeCalendlyModal(false);
+    }
+  });
+
+  window.addEventListener("popstate", function () {
+    if (calModalOpen) closeCalendlyModal(true);
+  });
+
   var calendlyTriggers = document.querySelectorAll("[data-calendly-url]");
   calendlyTriggers.forEach(function (trigger) {
     trigger.addEventListener("click", function (e) {
       var url = trigger.getAttribute("data-calendly-url");
       if (!url) return;
       e.preventDefault();
-      window.open(url, "_blank", "noopener");
+      openCalendlyModal(url);
     });
   });
 

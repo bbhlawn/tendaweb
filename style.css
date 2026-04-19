@@ -1500,3 +1500,213 @@ svg {
     gap: 0.4rem;
   }
 }
+
+/* ========================================================================
+   Footer socials (Instagram, TikTok)
+   ======================================================================== */
+
+.page__footer-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.page__socials {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.page__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  color: var(--jet);
+  background: transparent;
+  text-decoration: none;
+  border: 1px solid var(--hair-2);
+  transition: color 0.18s ease, border-color 0.18s ease,
+    background-color 0.18s ease, transform 0.18s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .page__social:hover {
+    color: var(--tangerine);
+    border-color: var(--tangerine);
+    transform: translateY(-1px);
+  }
+}
+
+.page__social:focus-visible {
+  outline: 2px solid var(--tangerine);
+  outline-offset: 3px;
+}
+
+.page__social--soon {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page__social--soon:hover {
+  color: var(--jet);
+  border-color: var(--hair-2);
+  transform: none;
+}
+
+/* ========================================================================
+   Calendly modal (custom iframe — replaces flaky popup widget)
+   ======================================================================== */
+
+.cal-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  animation: calFadeIn 0.18s ease both;
+}
+
+.cal-modal[hidden] {
+  display: none;
+}
+
+.cal-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 36, 41, 0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.cal-modal__panel {
+  position: relative;
+  width: min(1000px, calc(100vw - 32px));
+  height: min(92vh, 800px);
+  max-height: 92vh;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  animation: calPanelIn 0.24s var(--ease) both;
+}
+
+@media (max-width: 768px) {
+  .cal-modal__panel {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+  }
+}
+
+.cal-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(13, 36, 41, 0.08);
+  color: var(--jet);
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.cal-modal__close:hover {
+  background: rgba(13, 36, 41, 0.16);
+  transform: scale(1.05);
+}
+
+.cal-modal__close:focus-visible {
+  outline: 2px solid var(--jet);
+  outline-offset: 3px;
+}
+
+.cal-modal__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #fff;
+}
+
+.cal-modal__loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  z-index: 2;
+}
+
+.cal-modal__loader[hidden] {
+  display: none;
+}
+
+.cal-modal__spinner {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid var(--hair-2);
+  border-top-color: var(--jet);
+  animation: calSpin 0.8s linear infinite;
+}
+
+@keyframes calSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes calFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes calPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cal-modal,
+  .cal-modal__panel {
+    animation: none;
+  }
+  .cal-modal__spinner {
+    animation: calSpin 1.5s linear infinite;
+  }
+}
+
+/* Lock background scroll when modal is open */
+body.cal-locked {
+  overflow: hidden;
+}

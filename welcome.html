@@ -281,6 +281,44 @@
       </p>
     </footer>
 
+    <div
+      class="cal-modal"
+      id="cal-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cal-modal-title"
+      hidden
+    >
+      <div class="cal-modal__backdrop" data-cal-close></div>
+      <div class="cal-modal__panel">
+        <button
+          class="cal-modal__close"
+          type="button"
+          data-cal-close
+          aria-label="Close booking"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path
+              d="M6 6l12 12M18 6L6 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <h2 id="cal-modal-title" class="visually-hidden">Book a demo</h2>
+        <div class="cal-modal__loader" id="cal-modal-loader" aria-hidden="true">
+          <div class="cal-modal__spinner"></div>
+        </div>
+        <iframe
+          class="cal-modal__iframe"
+          id="cal-modal-iframe"
+          title="Schedule a demo with Tenda"
+          allow="camera; microphone; fullscreen; payment"
+        ></iframe>
+      </div>
+    </div>
+
     <script src="script.js" defer></script>
   </body>
 </html>
