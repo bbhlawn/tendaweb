@@ -11,7 +11,7 @@
   --hair-2: rgba(13, 36, 41, 0.16);
   --tangerine: #ec6d35;
   --evergreen: #2bb673;
-  --evergreen-soft: rgba(43, 182, 115, 0.22);
+  --jet-soft: rgba(13, 36, 41, 0.18);
   --device-green: #2f3d2a;
   --device-grey: #111214;
 
@@ -39,7 +39,7 @@ input,
 select,
 textarea,
 [role="button"] {
-  -webkit-tap-highlight-color: var(--evergreen-soft);
+  -webkit-tap-highlight-color: var(--jet-soft);
 }
 
 input:invalid,
@@ -396,9 +396,9 @@ svg {
 }
 
 .waitlist__field:focus-within {
-  outline: 2px solid var(--evergreen);
+  outline: 2px solid var(--jet);
   outline-offset: 2px;
-  border-color: rgba(43, 182, 115, 0.5);
+  border-color: rgba(13, 36, 41, 0.55);
 }
 
 .waitlist__dial {
@@ -485,7 +485,7 @@ svg {
 }
 
 .waitlist__btn:focus-visible {
-  outline: 2px solid var(--evergreen);
+  outline: 2px solid var(--jet);
   outline-offset: 3px;
 }
 
