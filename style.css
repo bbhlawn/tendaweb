@@ -10,6 +10,8 @@
   --hair: rgba(13, 36, 41, 0.1);
   --hair-2: rgba(13, 36, 41, 0.16);
   --tangerine: #ec6d35;
+  --evergreen: #2bb673;
+  --evergreen-soft: rgba(43, 182, 115, 0.22);
   --device-green: #2f3d2a;
   --device-grey: #111214;
 
@@ -27,6 +29,24 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* Soft green tap highlight on touch devices instead of the default
+   red/orange iOS Safari shows on focus + the form's :invalid red. */
+a,
+button,
+input,
+select,
+textarea,
+[role="button"] {
+  -webkit-tap-highlight-color: var(--evergreen-soft);
+}
+
+input:invalid,
+select:invalid {
+  /* Kill native red ring for required fields — we do our own validation. */
+  box-shadow: none;
+  outline: none;
 }
 
 html {
@@ -376,9 +396,9 @@ svg {
 }
 
 .waitlist__field:focus-within {
-  outline: 2px solid var(--tangerine);
+  outline: 2px solid var(--evergreen);
   outline-offset: 2px;
-  border-color: rgba(236, 109, 53, 0.5);
+  border-color: rgba(43, 182, 115, 0.5);
 }
 
 .waitlist__dial {
@@ -465,7 +485,7 @@ svg {
 }
 
 .waitlist__btn:focus-visible {
-  outline: 2px solid var(--tangerine);
+  outline: 2px solid var(--evergreen);
   outline-offset: 3px;
 }
 
