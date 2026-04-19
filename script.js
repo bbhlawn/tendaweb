@@ -102,70 +102,17 @@
     };
   }
 
-  // On mobile (small viewport OR touch primary input), Calendly's popup
-  // widget is cramped and lacks a clear close button — so we let the link
-  // open in a new browser tab via the existing target="_blank". Hitting
-  // Back on the new tab returns to Tenda instead of dropping the user out.
-  function isMobileLikeViewport() {
-    return (
-      window.matchMedia("(max-width: 768px)").matches ||
-      window.matchMedia("(pointer: coarse)").matches
-    );
-  }
-
-  var calendlyOpen = false;
-
-  function openCalendly(url) {
-    if (!window.Calendly || typeof window.Calendly.initPopupWidget !== "function") {
-      return false;
-    }
-    window.Calendly.initPopupWidget({ url: url });
-    calendlyOpen = true;
-    // Push a history entry so the browser Back button closes the popup
-    // instead of leaving the page.
-    try {
-      history.pushState({ calendly: true }, "", location.href);
-    } catch (_) {}
-    return true;
-  }
-
-  function closeCalendly() {
-    if (
-      window.Calendly &&
-      typeof window.Calendly.closePopupWidget === "function"
-    ) {
-      window.Calendly.closePopupWidget();
-    }
-    calendlyOpen = false;
-  }
-
-  window.addEventListener("popstate", function () {
-    if (calendlyOpen) closeCalendly();
-  });
-
+  // Calendly: always open in a new browser tab (popup widget was getting
+  // stuck on the loading spinner on desktop). New tab works reliably
+  // everywhere and Calendly's full booking page is actually nicer than
+  // the cramped popup anyway. Back button returns the user to Tenda.
   var calendlyTriggers = document.querySelectorAll("[data-calendly-url]");
   calendlyTriggers.forEach(function (trigger) {
     trigger.addEventListener("click", function (e) {
       var url = trigger.getAttribute("data-calendly-url");
       if (!url) return;
-
-      // Always handle the click ourselves so the behavior is deterministic
-      // (avoids races with browser default link handling on slow connections).
       e.preventDefault();
-
-      // Mobile / touch: open Calendly in a brand new browser tab so the
-      // Tenda tab stays put and the user can press Back to return.
-      if (isMobileLikeViewport()) {
-        window.open(url, "_blank", "noopener");
-        return;
-      }
-
-      // Desktop: try the in-page popup widget. If the Calendly script
-      // hasn't loaded yet (slow network, ad blocker, etc.), fall back
-      // to opening Calendly in a new tab so the link is never dead.
-      if (!openCalendly(url)) {
-        window.open(url, "_blank", "noopener");
-      }
+      window.open(url, "_blank", "noopener");
     });
   });
 
