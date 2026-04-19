@@ -1011,17 +1011,27 @@ svg {
     max-width: 100%;
     position: relative;
     /* Force a fresh stacking context above the phone stage so the
-       cream card always paints on top, regardless of grid quirks. */
+       cream backdrop always paints on top, regardless of grid quirks. */
     isolation: isolate;
     z-index: 5;
     margin-top: -5rem;
-    /* Solid cream card behind every line of text. Slightly darker than
-       the porcelain page background so it reads as its own block, fully
-       obscuring the phones underneath. */
+    /* Solid cream backing covers the phones in the overlap area.
+       The body background (also cream on mobile, see below) carries
+       the same color through the page edges and the footer, so the
+       block flows seamlessly instead of ending in a visible box. */
     background: var(--cream);
-    margin-inline: calc(var(--gutter) * -1);
-    padding: 1.5rem var(--gutter) 0;
-    box-shadow: 0 -2px 14px rgba(13, 36, 41, 0.06);
+    padding-top: 1.5rem;
+  }
+
+  /* Whole mobile page sits on cream so the copy backdrop bleeds to
+     every edge — no thin porcelain strip on the right, no porcelain
+     break before the contact / copyright footer. */
+  body {
+    background: var(--cream);
+  }
+
+  .topbar {
+    background: var(--cream);
   }
 }
 
@@ -1033,17 +1043,17 @@ svg {
 
   .phone--front,
   .phone--back {
-    width: 52%;
-    max-width: 240px;
+    width: 47%;
+    max-width: 215px;
   }
 
   .phone--front {
-    left: 3%;
+    left: 6%;
     top: 6%;
   }
 
   .phone--back {
-    right: 0%;
+    right: 5%;
     top: -3%;
   }
 
