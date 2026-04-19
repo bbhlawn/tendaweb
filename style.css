@@ -1015,12 +1015,25 @@ svg {
     isolation: isolate;
     z-index: 5;
     margin-top: -5rem;
-    /* Full-bleed cream backdrop: break out of the page's gutter padding
-       so the background reaches viewport edge-to-edge on both sides,
-       while keeping the inner text at the original gutter inset. */
+    padding-top: 1.5rem;
+    /* Backdrop is rendered via the ::before pseudo below so it can
+       be guaranteed full-viewport-width without relying on grid
+       negative-margin behaviour (which iOS Safari can clip on the
+       right edge). */
+    background: transparent;
+  }
+
+  .hero__copy::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
     background: var(--cream);
-    margin-inline: calc(50% - 50vw);
-    padding: 1.5rem var(--gutter) 0;
+    z-index: -1;
+    pointer-events: none;
   }
 
   /* Whole mobile page sits on cream so the copy backdrop bleeds to
